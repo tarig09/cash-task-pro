@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>لوحة تحكم المشرف - كاش تاسك برو</title>
+<style>
+body{font-family:Arial;background:#1a1a2e;padding:20px}
+.container{max-width:1200px;margin:auto}
+.header{background:#16213e;color:#fff;padding:20px;border-radius:15px;margin-bottom:20px}
+table{width:100%;background:#fff;border-radius:10px;overflow:hidden}
+th,td{padding:12px;text-align:right;border-bottom:1px solid #ddd}
+th{background:#667eea;color:#fff}
+.btn{display:inline-block;padding:5px 10px;background:#dc3545;color:#fff;text-decoration:none;border-radius:5px}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>👑 لوحة تحكم المشرف</h1>
+<a href="/dashboard" style="color:#fff">العودة للوحة</a>
+</div>
+<h2 style="color:#fff">📋 المستخدمين</h2>
+<table>
+<thead>
+<th>ID</th><th>اسم المستخدم</th><th>البريد</th><th>الرصيد</th><th>المهام</th><th>حظر</th>
+</thead>
+<tbody>
+{% for user in users %}
+<tr>
+<td>{{ user.id }}</td>
+<td>{{ user.username }}</td>
+<td>{{ user.email }}</td>
+<td>{{ user.balance }} ج</td>
+<td>{{ user.tasks_completed }}</td>
+<td><a href="/admin/ban/{{ user.id }}" class="btn" onclick="return confirm('حظر هذا المستخدم؟')">حظر</a></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</body>
+</html>
